@@ -4113,7 +4113,7 @@ namespace App\Models {
      * @property-read int|null $items_count
      * @property-read \App\Models\ProductServiceCategory $category
      * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\DebitNote> $debitNote
-     * @property-read int|null $debitNote_count
+     * @property-read int|null $debit_note_count
      * @property-read \App\Models\BillPayment $lastPayments
      * @property-read \App\Models\Tax $taxes
      * @method static \Illuminate\Database\Eloquent\Builder<Bill>|Bill whereId($value)
@@ -6013,7 +6013,7 @@ namespace App\Models {
      * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\BugComment> $comments
      * @property-read int|null $comments_count
      * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\BugFile> $bugFiles
-     * @property-read int|null $bugFiles_count
+     * @property-read int|null $bug_files_count
      * @property-read \App\Models\Project $project
      * @property-read \App\Models\User $projectBUg
      * @method static \Illuminate\Database\Eloquent\Builder<Bug>|Bug whereId($value)
@@ -18498,7 +18498,7 @@ namespace App\Models {
      * @property-read \App\Models\User $client
      * @property-read \App\Models\Tax $tax
      * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\ProductService> $getProducts
-     * @property-read int|null $getProducts_count
+     * @property-read int|null $get_products_count
      * @method static \Illuminate\Database\Eloquent\Builder<Estimation>|Estimation whereId($value)
      * @method static \Illuminate\Database\Eloquent\Builder<Estimation>|Estimation whereEstimationId($value)
      * @method static \Illuminate\Database\Eloquent\Builder<Estimation>|Estimation whereClientId($value)
@@ -23529,11 +23529,11 @@ namespace App\Models {
      * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\InvoicePayment> $payments
      * @property-read int|null $payments_count
      * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\InvoiceBankTransfer> $bankPayments
-     * @property-read int|null $bankPayments_count
+     * @property-read int|null $bank_payments_count
      * @property-read \App\Models\Customer $customer
      * @property-read \App\Models\ProductServiceCategory $category
      * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\CreditNote> $creditNote
-     * @property-read int|null $creditNote_count
+     * @property-read int|null $credit_note_count
      * @property-read \App\Models\InvoicePayment $lastPayments
      * @property-read \App\Models\Tax $taxes
      * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\InvoiceProduct> $products
@@ -40244,7 +40244,7 @@ namespace App\Models {
      * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\TaskChecklist> $checklist
      * @property-read int|null $checklist_count
      * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\TaskFile> $taskFiles
-     * @property-read int|null $taskFiles_count
+     * @property-read int|null $task_files_count
      * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\TaskComment> $comments
      * @property-read int|null $comments_count
      * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\Timesheet> $timesheets

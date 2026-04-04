@@ -123,69 +123,54 @@
 
     <link rel="stylesheet" href="{{ asset('css/custom.css') }}">
 
+    <!-- Modern Auth Stylesheet -->
+    <link rel="stylesheet" href="{{ asset('css/modern-auth.css') }}">
+
 </head>
 
 <body class="{{ $themeColor }}">
-    <div class="custom-login">
-        <div class="login-bg-img">
-            <img src="{{ isset($setting['color_flag']) && $setting['color_flag'] == 'false' ? asset('assets/images/auth/'.$color.'.svg') : asset('assets/images/auth/theme-3.svg') }}" class="login-bg-1">
-            <img src="{{ asset('assets/images/auth/common.svg') }}" class="login-bg-2">
-        </div>
-        <div class="bg-login bg-primary"></div>
-        <div class="custom-login-inner">
-            <header class="dash-header">
-                <nav class="navbar navbar-expand-md default">
-                    <div class="container">
-                        <div class="navbar-brand">
-
-                        <a class="navbar-brand" href="#">
-                            @if ($setting['cust_darklayout'] == 'on')
-                                <img class="logo"
-                                    src="{{ $logo . (isset($company_logo) && !empty($company_logo) ? $company_logo : 'logo-light.png') . '?' . time() }}"
-                                    alt="" loading="lazy"/>
-                            @else
-                                <img class="logo"
-                                    src="{{ $logo . (isset($company_logo) && !empty($company_logo) ? $company_logo : 'logo-dark.png') . '?' . time() }}"
-                                    alt="" loading="lazy"/>
-                            @endif
-                        </a>
-
-
-                        </div>
-                        <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-                            data-bs-target="#navbarlogin">
-                            <span class="navbar-toggler-icon"></span>
-                        </button>
-                        <div class="collapse navbar-collapse" id="navbarlogin">
-                            <ul class="navbar-nav align-items-center ms-auto mb-2 mb-lg-0">
-                                @include('landingpage::layouts.buttons')
-                                @yield('language-bar')
-                            </ul>
-                        </div>
+    <div class="modern-login-container">
+        <div class="login-wrapper">
+            <div class="form-container">
+                <div class="form-header">
+                    <div class="brand-logo-wrapper">
+                        @if ($setting['cust_darklayout'] == 'on')
+                            <img class="brand-logo"
+                                src="{{ $logo . (isset($company_logo) && !empty($company_logo) ? $company_logo : 'logo-light.png') . '?' . time() }}"
+                                alt="Company Logo" loading="lazy"/>
+                        @else
+                            <img class="brand-logo"
+                                src="{{ $logo . (isset($company_logo) && !empty($company_logo) ? $company_logo : 'logo-dark.png') . '?' . time() }}"
+                                alt="Company Logo" loading="lazy"/>
+                        @endif
                     </div>
-                </nav>
-            </header>
-            <main class="custom-wrapper">
-                <div class="custom-row">
-                    <div class="card">
-                        @yield('content')
-                    </div>
+                    <h2>{{ __('Sign In') }}</h2>
+                    <p>{{ __('Access your account') }}</p>
                 </div>
-            </main>
-            <footer>
-                <div class="auth-footer">
-                    <div class="container">
-                        <div class="row">
-                            <div class="col-12">
-                                <span>&copy; {{ date('Y') }}
-                                    {{ App\Models\Utility::getValByName('footer_text') ? App\Models\Utility::getValByName('footer_text') : config('app.name', 'Storego Saas') }}
-                                </span>
-                            </div>
+
+                <div class="language-selector">
+                    @php $languages = App\Models\Utility::languages(); @endphp
+                    @if(count($languages) > 1)
+                        <div class="lang-dropdown">
+                            <select class="form-select form-select-sm" onchange="window.location.href=route('login', this.value)">
+                                @foreach ($languages as $code => $language)
+                                    <option value="{{ $code }}" {{ $lang == $code ? 'selected' : '' }}>{{ Str::upper($language) }}</option>
+                                @endforeach
+                            </select>
                         </div>
-                    </div>
+                    @endif
                 </div>
-            </footer>
+
+                @yield('content')
+            </div>
         </div>
+
+        <!-- Footer -->
+        <footer class="auth-footer-modern">
+            <span>&copy; {{ date('Y') }}
+                {{ App\Models\Utility::getValByName('footer_text') ? App\Models\Utility::getValByName('footer_text') : config('app.name', 'Storego Saas') }}
+            </span>
+        </footer>
     </div>
 
     @if ($get_cookie == 'on')
