@@ -500,9 +500,9 @@
             </div>
         </div>
     </div>
-    {{-- @if (!isset($preview))
+    @if (!isset($preview))
     @include('invoice.script');
-@endif --}}
+@endif
 </body>
 
 </html>
