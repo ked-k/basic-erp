@@ -431,10 +431,10 @@
                                         <strong>{{ __('Billed To') }} :</strong><br>
                                         @if (!empty($customer->billing_name))
                                             {{ !empty($customer->billing_name) ? $customer->billing_name : '' }}<br>
-                                            {{ !empty($customer->billing_address) ? $customer->billing_address : '' }}<br>
+                                            {{ !empty($customer->billing_address) ? $customer->billing_address : '' }}-
                                             {{ !empty($customer->billing_city) ? $customer->billing_city : '' . ', ' }}<br>
                                             {{ !empty($customer->billing_state) ? $customer->billing_state : '', ', ' }},
-                                            {{ !empty($customer->billing_zip) ? $customer->billing_zip : '' }}<br>
+                                            {{ !empty($customer->billing_zip) ? $customer->billing_zip : '' }}-
                                             {{ !empty($customer->billing_country) ? $customer->billing_country : '' }}<br>
                                             {{ !empty($customer->billing_phone) ? $customer->billing_phone : '' }}<br>
                                             @if ($settings['vat_gst_number_switch'] == 'on')
@@ -450,7 +450,7 @@
                                     </small>
                                 </div>
 
-                                @if (App\Models\Utility::getValByName('shipping_display') == 'on')
+                                {{-- @if (App\Models\Utility::getValByName('shipping_display') == 'on')
                                     <div class="col ">
                                         <small>
                                             <strong>{{ __('Shipped To') }} :</strong><br>
@@ -467,7 +467,7 @@
                                             @endif
                                         </small>
                                     </div>
-                                @endif
+                                @endif --}}
                                 <div class="col">
                                     <div class="float-end mt-3">
                                         @if($settings['invoice_qr_display'] == 'on')
