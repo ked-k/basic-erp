@@ -1421,7 +1421,7 @@
                                             class="dash-link">{{ __('System Settings') }}</a>
                                     </li>
                                 @endif
-                                @if (Gate::check('manage company plan'))
+                                {{-- @if (Gate::check('manage company plan'))
                                     <li
                                         class="dash-item{{ Request::route()->getName() == 'plans.index' || Request::route()->getName() == 'stripe' ? ' active' : '' }}">
                                         <a href="{{ route('plans.index') }}"
@@ -1438,7 +1438,7 @@
                                     <li class="dash-item {{ Request::segment(1) == 'order' ? 'active' : '' }}">
                                         <a href="{{ route('order.index') }}" class="dash-link">{{ __('Order') }}</a>
                                     </li>
-                                @endif
+                                @endif --}}
                             </ul>
                         </li>
                     @endif
