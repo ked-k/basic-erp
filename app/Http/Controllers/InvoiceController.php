@@ -253,14 +253,14 @@ class InvoiceController extends Controller
                 $invoice->due_date = $request->due_date;
                 $invoice->ref_number = $request->ref_number;
                 $invoice->category_id = $request->category_id;
-                
+
                 $due = $invoice->getDue();
                 if ($due <= 0) {
                     $invoice->status = 4;
                 } else {
                     $invoice->status = 3;
                 }
-                
+
                 $invoice->save();
 
                 Utility::starting_number($invoice->invoice_id + 1, 'invoice');
@@ -422,7 +422,7 @@ class InvoiceController extends Controller
                     Utility::updateUserBalance('customer', $invoice->customer_id, $invoices->amount, 'credit');
 
                     $invoicepayment = InvoicePayment::find($invoices->id);
-                    
+
                     AddTransactionLine::where('reference_id', $invoice->id)->where('reference_sub_id', $invoicepayment->id)->where('reference', 'Invoice Payment')->delete();
 
                     $invoicepayment->delete();
@@ -658,7 +658,7 @@ class InvoiceController extends Controller
             if ($invoice->getDue() < $request->amount) {
                 return redirect()->back()->with('error', __('Invoice payment amount should not greater than subtotal.'));
             }
-            
+
             $bankAccount = BankAccount::find($request->account_id);
             if($bankAccount->chart_account_id == 0)
             {
@@ -793,7 +793,7 @@ class InvoiceController extends Controller
             InvoicePayment::where('id', '=', $payment_id)->delete();
 
             InvoiceBankTransfer::where('id', '=', $payment_id)->delete();
-            
+
             AddTransactionLine::where('reference_id',$invoice->id)->where('reference_sub_id',$payment_id)->where('reference','Invoice Payment')->delete();
 
             $due = $invoice->getDue();
@@ -1117,6 +1117,9 @@ class InvoiceController extends Controller
             $img = Utility::get_file('invoice_logo/') . $invoice_logo;
         } else {
             $img = asset($logo . '/' . (isset($company_logo) && !empty($company_logo) ? $company_logo : 'logo-dark.png'));
+        }
+        if(!$img){
+            $img = asset('assets/images/logo.png');
         }
 
         if ($invoice) {

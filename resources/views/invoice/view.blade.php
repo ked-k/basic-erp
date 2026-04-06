@@ -396,6 +396,13 @@
                         <div class="invoice-print">
                             <div class="row invoice-title mt-2">
                                 <div class="col-xs-12 col-sm-12 col-nd-6 col-lg-6 col-12">
+                                    <img width="220px"
+    src="{{ (!empty($company_logo) && file_exists(public_path('storage/uploads/logo/' . $company_logo)))
+        ? asset('storage/uploads/logo/' . $company_logo)
+        : asset('assets/images/logo.png') }}"
+    class="logo"
+    alt="Logo"
+>
                                     <h4>{{ __('Invoice') }}</h4>
                                 </div>
                                 <div class="col-xs-12 col-sm-12 col-nd-6 col-lg-6 col-12 text-end">
